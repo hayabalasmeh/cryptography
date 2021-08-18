@@ -19,8 +19,8 @@ def encrypt(plain_text, key):
 
     for character in plain_text:
         num = ord(character)
-        if num == 32:
-            encrypted_string = encrypted_string + character
+        # if num == 32:
+        #     encrypted_string = encrypted_string + character
         if num in range(97,123):
             shifted_num = num + key % 26
             if shifted_num > ord('z'):
@@ -31,7 +31,8 @@ def encrypt(plain_text, key):
             if shifted_num > ord('Z'):
                 shifted_num = ord('Z') - 26  + key % 26
             encrypted_string = encrypted_string + chr(shifted_num)
-        
+        else:
+            encrypted_string = encrypted_string + character
         
 
     return encrypted_string
@@ -41,8 +42,8 @@ def decrypt(encrypted, key):
     encrypted_string = ""
     for character in encrypted:
         num = ord(character)
-        if num == 32:
-            encrypted_string = encrypted_string + character
+        # if num == 32:
+        #     encrypted_string = encrypted_string + character
         if num in range(97,123):
             shifted_num = num - key % 26
             if shifted_num > ord('z'):
@@ -53,6 +54,8 @@ def decrypt(encrypted, key):
             if shifted_num > ord('Z'):
                 shifted_num = ord('Z') - 26  - key % 26
             encrypted_string = encrypted_string + chr(shifted_num)
+        else:
+            encrypted_string = encrypted_string + character
 
     return encrypted_string
 
